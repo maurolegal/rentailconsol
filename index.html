@@ -1,138 +1,861 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alquiler de Consola PS5 a Domicilio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #121212;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #1e1e1e;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-      color: #00bcd4;
-    }
-    main {
-      padding: 20px;
-    }
-    section {
-      margin-bottom: 40px;
-    }
-    label {
-      display: block;
-      margin-top: 10px;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 4px;
-      border: none;
-    }
-    button {
-      background-color: #00bcd4;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    footer {
-      background: #1e1e1e;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameRent - Alquiler de PS5 a Domicilio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0072ce;
+            --secondary: #000000;
+            --accent: #ff7900;
+            --light: #f5f7fa;
+            --dark: #1a1a1a;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        
+        .logo-text {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        .tagline {
+            text-align: center;
+            color: #ccc;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title i {
+            color: var(--accent);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-img {
+            height: 200px;
+            background: linear-gradient(45deg, #1a2a6c, #b21f1f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .card-img i {
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .card-details {
+            margin: 15px 0;
+            color: #555;
+        }
+        
+        .card-details li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .card-details i {
+            color: var(--success);
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+        
+        .price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: #777;
+            font-weight: normal;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0056a0;
+            transform: translateY(-3px);
+        }
+        
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            background: #e56a00;
+            transform: translateY(-3px);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 114, 206, 0.2);
+        }
+        
+        .upload-container {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f9f9f9;
+        }
+        
+        .upload-container:hover {
+            border-color: var(--primary);
+            background: #f0f7ff;
+        }
+        
+        .upload-container i {
+            font-size: 3rem;
+            color: #777;
+            margin-bottom: 15px;
+        }
+        
+        .upload-text {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .signature-container {
+            height: 150px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-top: 20px;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .signature-placeholder {
+            color: #777;
+            text-align: center;
+        }
+        
+        .security-policy {
+            background: #fff8e1;
+            border-left: 4px solid var(--warning);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        
+        .policy-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #856404;
+        }
+        
+        .policy-list {
+            padding-left: 20px;
+        }
+        
+        .policy-list li {
+            margin-bottom: 10px;
+        }
+        
+        .extras-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .extra-item {
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .extra-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .extra-item.selected {
+            border-color: var(--accent);
+            background: #fff8f0;
+        }
+        
+        .extra-item i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .extra-price {
+            font-weight: bold;
+            color: var(--accent);
+            margin-top: 5px;
+        }
+        
+        .summary-box {
+            background: #e8f4ff;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+        
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid var(--primary);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+        
+        .step {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #777;
+        }
+        
+        .step.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .step.completed {
+            background: var(--success);
+            color: white;
+        }
+        
+        .step-label {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .step-label.active {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .step-container {
+            position: relative;
+        }
+        
+        .progress-bar {
+            height: 5px;
+            background: #ddd;
+            position: absolute;
+            top: 17px;
+            left: 50px;
+            right: 50px;
+            z-index: -1;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--primary);
+            width: 33%;
+            transition: width 0.5s ease;
+        }
+        
+        .tabs {
+            display: none;
+        }
+        
+        .tabs.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-text {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Sistema de Alquiler de Consola PS5 a Domicilio</h1>
-  </header>
-
-  <main>
-    <section>
-      <h2>Formulario de Alquiler</h2>
-      <form id="rentalForm">
-        <label>Nombre completo:</label>
-        <input type="text" name="nombre" required>
-
-        <label>Cédula:</label>
-        <input type="text" name="cedula" required>
-
-        <label>Dirección de entrega:</label>
-        <input type="text" name="direccion" required>
-
-        <label>Teléfono:</label>
-        <input type="tel" name="telefono" required>
-
-        <label>Duración del alquiler:</label>
-        <select name="duracion">
-          <option value="6">6 Horas - $40.000</option>
-          <option value="24">24 Horas - $70.000</option>
-          <option value="48">2 Días - $130.000</option>
-        </select>
-
-        <label>Controles adicionales ($10.000 c/u):</label>
-        <select name="controles">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-        </select>
-
-        <label>Juegos requeridos:</label>
-        <textarea name="juegos" placeholder="Escriba los juegos que desea incluir..." rows="3"></textarea>
-
-        <label>Recibo de servicio (número o dirección):</label>
-        <input type="text" name="recibo" required>
-
-        <label>Comentarios adicionales:</label>
-        <textarea name="comentarios" rows="3"></textarea>
-
-        <button type="submit">Enviar Solicitud</button>
-      </form>
-    </section>
-
-    <section>
-      <h2>Resumen del Servicio</h2>
-      <ul>
-        <li>Incluye transporte e instalación</li>
-        <li>Depósito de seguridad: $100.000</li>
-        <li>Contratos con foto de cédula + selfie + recibo de domicilio</li>
-        <li>Revisión y firma del contrato antes de entregar</li>
-        <li>Retiro inmediato al final del alquiler</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Política de Seguridad</h2>
-      <p>
-        La consola se entrega con contrato firmado, fotos de respaldo y registro de documento. En caso de daño, pérdida o intento de hurto, se procederá con las autoridades y se aplicarán las cláusulas del contrato. Todo alquiler requiere verificación de identidad y dirección.
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 PS5 Rental Services. Todos los derechos reservados.
-  </footer>
-
-  <script>
-    document.getElementById("rentalForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      alert("Solicitud enviada. Pronto te contactaremos para confirmar los datos y programar la entrega.");
-      this.reset();
-    });
-  </script>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="logo-text">Game<span>Rent</span></div>
+            </div>
+            <p class="tagline">Alquiler de consolas PS5 a domicilio con máxima seguridad</p>
+        </header>
+        
+        <div class="step-container">
+            <div class="step-indicator">
+                <div class="step active">1</div>
+                <div class="step">2</div>
+                <div class="step">3</div>
+                <div class="step">4</div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="step-labels">
+                <div class="step-label active">Documentos</div>
+                <div class="step-label">Producto</div>
+                <div class="step-label">Contrato</div>
+                <div class="step-label">Confirmación</div>
+            </div>
+        </div>
+        
+        <!-- Paso 1: Verificación de documentos -->
+        <div class="tabs active" id="step1">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-id-card"></i> Verificación de Identidad</h2>
+                
+                <p>Para garantizar la seguridad del servicio, requerimos los siguientes documentos:</p>
+                
+                <div class="security-policy">
+                    <div class="policy-title">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Política de Seguridad</h3>
+                    </div>
+                    <ul class="policy-list">
+                        <li>La consola se entrega con contrato firmado y registro de documentos</li>
+                        <li>En caso de daño, pérdida o hurto, se procederá con las autoridades</li>
+                        <li>Todo alquiler requiere verificación de identidad y dirección</li>
+                        <li>Retiro inmediato al final del período de alquiler</li>
+                    </ul>
+                </div>
+                
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-img">
+                            <i class="fas fa-id-card"></i>
+                            <div class="card-badge">Requerido</div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Cédula de Identidad</h3>
+                            <p>Fotografía o escaneo de ambos lados de su cédula de identidad vigente.</p>
+                            <div class="form-group">
+                                <div class="upload-container" id="idUpload">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p class="upload-text">Haga clic para subir su cédula</p>
+                                    <small>Formatos: JPG, PNG, PDF (Máx. 5MB)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-img">
+                            <i class="fas fa-user-circle"></i>
+                            <div class="card-badge">Requerido</div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Selfie de Verificación</h3>
+                            <p>Una fotografía reciente donde se vea claramente su rostro.</p>
+                            <div class="form-group">
+                                <div class="upload-container" id="selfieUpload">
+                                    <i class="fas fa-camera"></i>
+                                    <p class="upload-text">Haga clic para tomar una selfie</p>
+                                    <small>Asegúrese de tener buena iluminación</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-img">
+                            <i class="fas fa-home"></i>
+                            <div class="card-badge">Requerido</div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Comprobante de Domicilio</h3>
+                            <p>Recibo de servicios (luz, agua, teléfono) o estado de cuenta bancaria.</p>
+                            <div class="form-group">
+                                <div class="upload-container" id="addressUpload">
+                                    <i class="fas fa-file-invoice"></i>
+                                    <p class="upload-text">Haga clic para subir comprobante</p>
+                                    <small>Debe mostrar su nombre y dirección claramente</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <button class="btn btn-primary" onclick="nextStep(2)">Continuar a Selección de Producto</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Paso 2: Selección de consola y extras -->
+        <div class="tabs" id="step2">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-tv"></i> Seleccione su PS5 y Accesorios</h2>
+                
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-img">
+                            <i class="fab fa-playstation"></i>
+                            <div class="card-badge">Disponible</div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">PS5 Standard Edition</h3>
+                            <ul class="card-details">
+                                <li><i class="fas fa-check-circle"></i> Consola PS5 con 825GB SSD</li>
+                                <li><i class="fas fa-check-circle"></i> 1 Control DualSense</li>
+                                <li><i class="fas fa-check-circle"></i> 3 Juegos a elección</li>
+                                <li><i class="fas fa-check-circle"></i> Kit de limpieza y desinfección</li>
+                            </ul>
+                            <div class="price">$140.000 <span>/24 horas</span></div>
+                            <button class="btn btn-accent" onclick="selectConsole(this)">Seleccionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="margin: 30px 0 20px;">Accesorios Adicionales</h3>
+                
+                <div class="extras-grid">
+                    <div class="extra-item" onclick="toggleExtra(this, 5000)">
+                        <i class="fas fa-compact-disc"></i>
+                        <h4>Juego Adicional</h4>
+                        <p>Seleccione un juego extra</p>
+                        <div class="extra-price">+ $5.000</div>
+                    </div>
+                    
+                    <div class="extra-item" onclick="toggleExtra(this, 10000)">
+                        <i class="fas fa-gamepad"></i>
+                        <h4>Control Adicional</h4>
+                        <p>DualSense extra</p>
+                        <div class="extra-price">+ $10.000</div>
+                    </div>
+                    
+                    <div class="extra-item" onclick="toggleExtra(this, 15000)">
+                        <i class="fas fa-headphones"></i>
+                        <h4>Audífonos</h4>
+                        <p>Para experiencia inmersiva</p>
+                        <div class="extra-price">+ $15.000</div>
+                    </div>
+                    
+                    <div class="extra-item" onclick="toggleExtra(this, 8000)">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Cargador Doble</h4>
+                        <p>Para dos controles</p>
+                        <div class="extra-price">+ $8.000</div>
+                    </div>
+                </div>
+                
+                <div class="summary-box">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">Resumen de Pedido</h3>
+                    
+                    <div class="summary-item">
+                        <span>Alquiler PS5 (24h):</span>
+                        <span>$140.000</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Extras:</span>
+                        <span id="extras-total">$0</span>
+                    </div>
+                    
+                    <div class="summary-total">
+                        <span>Total a pagar:</span>
+                        <span id="total-price">$140.000</span>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-top: 30px;">
+                    <button class="btn btn-primary" onclick="nextStep(3)">Continuar a Firma de Contrato</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Paso 3: Firma de contrato -->
+        <div class="tabs" id="step3">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-file-contract"></i> Firma del Contrato</h2>
+                
+                <div class="security-policy">
+                    <div class="policy-title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Términos y Condiciones Importantes</h3>
+                    </div>
+                    <ul class="policy-list">
+                        <li>El equipo debe devolverse en el mismo estado en que fue entregado</li>
+                        <li>El período de alquiler comienza en el momento de la entrega</li>
+                        <li>Retrasos en la devolución tendrán multa de $20.000 por hora</li>
+                        <li>Cualquier daño será cobrado según evaluación técnica</li>
+                        <li>En caso de pérdida o hurto, se cobrará el valor total del equipo ($2.500.000)</li>
+                        <li>La consola incluye sistema de geolocalización durante el período de alquiler</li>
+                    </ul>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" class="form-control" placeholder="Ingrese su nombre completo">
+                </div>
+                
+                <div class="form-group">
+                    <label>Número de Cédula</label>
+                    <input type="text" class="form-control" placeholder="Ingrese su número de identificación">
+                </div>
+                
+                <div class="form-group">
+                    <label>Dirección de Entrega</label>
+                    <input type="text" class="form-control" placeholder="Ingrese dirección exacta para entrega">
+                </div>
+                
+                <div class="form-group">
+                    <label>Teléfono de Contacto</label>
+                    <input type="tel" class="form-control" placeholder="Ingrese su teléfono móvil">
+                </div>
+                
+                <div class="form-group">
+                    <label>Firma Digital</label>
+                    <div class="signature-container">
+                        <div class="signature-placeholder">
+                            <i class="fas fa-signature" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                            <p>Haga clic aquí para firmar digitalmente</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="form-control" style="height: 150px; overflow-y: auto; font-size: 0.9rem;">
+                        <p><strong>DECLARO BAJO JURAMENTO:</strong> Que los documentos proporcionados son auténticos y corresponden a mi persona. Acepto los términos y condiciones establecidos en este contrato. Autorizo a GameRent a realizar las verificaciones de seguridad necesarias, incluyendo la geolocalización del equipo durante el período de alquiler. Me comprometo a devolver el equipo en el plazo establecido y en las mismas condiciones en que fue recibido. En caso de incumplimiento, acepto las consecuencias legales y económicas establecidas en este contrato.</p>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <button class="btn btn-accent" onclick="nextStep(4)">Confirmar y Finalizar Reserva</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Paso 4: Confirmación -->
+        <div class="tabs" id="step4">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-check-circle"></i> ¡Reserva Confirmada!</h2>
+                
+                <div style="text-align: center; padding: 40px 0;">
+                    <i class="fas fa-check-circle" style="font-size: 6rem; color: var(--success); margin-bottom: 30px;"></i>
+                    <h2 style="margin-bottom: 20px; color: var(--success);">Su reserva ha sido exitosa</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 30px;">Gracias por elegir GameRent. Su consola PS5 será entregada en la dirección proporcionada dentro de las próximas 2 horas.</p>
+                    
+                    <div class="card" style="max-width: 600px; margin: 0 auto;">
+                        <div class="card-content">
+                            <h3 class="card-title">Detalles de Entrega</h3>
+                            <div style="margin: 25px 0;">
+                                <p><strong>Código de Reserva:</strong> GR-2023-5A8B2C</p>
+                                <p><strong>Fecha de Entrega:</strong> Hoy, 15:00 - 17:00</p>
+                                <p><strong>Dirección:</strong> Calle Principal #123, Ciudad</p>
+                                <p><strong>Equipo:</strong> PS5 Standard + 1 control + 3 juegos</p>
+                                <p><strong>Extras:</strong> 1 juego adicional</p>
+                                <p><strong>Total Pagado:</strong> $145.000</p>
+                            </div>
+                            <div class="security-policy">
+                                <p><i class="fas fa-info-circle"></i> Recuerde tener su cédula física disponible para la verificación al momento de la entrega. El contrato será firmado físicamente con el representante.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" style="margin-top: 30px; max-width: 300px;" onclick="resetProcess()">
+                        <i class="fas fa-redo"></i> Realizar otra reserva
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>GameRent &copy; 2023 - Todos los derechos reservados</p>
+            <p>Sistema de alquiler de consolas con máxima seguridad | Tel: +57 1 2345678 | info@gamerent.com</p>
+        </div>
+    </div>
+    
+    <script>
+        // Variables globales
+        let currentStep = 1;
+        let extrasTotal = 0;
+        const basePrice = 140000;
+        
+        // Navegación entre pasos
+        function nextStep(step) {
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            document.getElementById(`step${step}`).classList.add('active');
+            
+            // Actualizar indicadores
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((s, index) => {
+                if (index < step) s.classList.add('completed');
+                if (index === step - 1) s.classList.add('active');
+            });
+            
+            // Actualizar barra de progreso
+            const progress = document.getElementById('progress');
+            progress.style.width = `${(step-1)*33}%`;
+            
+            currentStep = step;
+        }
+        
+        // Selección de extras
+        function toggleExtra(element, price) {
+            element.classList.toggle('selected');
+            
+            if (element.classList.contains('selected')) {
+                extrasTotal += price;
+            } else {
+                extrasTotal -= price;
+            }
+            
+            // Actualizar resumen
+            document.getElementById('extras-total').textContent = `$${extrasTotal.toLocaleString()}`;
+            document.getElementById('total-price').textContent = `$${(basePrice + extrasTotal).toLocaleString()}`;
+        }
+        
+        // Selección de consola
+        function selectConsole(button) {
+            const buttons = document.querySelectorAll('.btn-accent');
+            buttons.forEach(btn => {
+                btn.textContent = 'Seleccionar';
+                btn.classList.remove('selected');
+            });
+            
+            button.textContent = '✓ Seleccionado';
+            button.classList.add('selected');
+        }
+        
+        // Resetear proceso
+        function resetProcess() {
+            // Resetear UI
+            document.querySelectorAll('.step').forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index === 0) step.classList.add('active');
+            });
+            
+            document.getElementById('progress').style.width = '0%';
+            document.getElementById('step4').classList.remove('active');
+            document.getElementById('step1').classList.add('active');
+            
+            // Resetear selecciones
+            extrasTotal = 0;
+            document.getElementById('extras-total').textContent = '$0';
+            document.getElementById('total-price').textContent = `$${basePrice.toLocaleString()}`;
+            
+            document.querySelectorAll('.extra-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            document.querySelectorAll('.btn-accent').forEach(btn => {
+                btn.textContent = 'Seleccionar';
+                btn.classList.remove('selected');
+            });
+            
+            currentStep = 1;
+        }
+        
+        // Simular subida de documentos
+        document.querySelectorAll('.upload-container').forEach(container => {
+            container.addEventListener('click', function() {
+                this.innerHTML = `
+                    <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                    <p class="upload-text" style="color: var(--success);">Documento subido correctamente</p>
+                    <small>Verificación en proceso...</small>
+                `;
+            });
+        });
+    </script>
 </body>
 </html>
