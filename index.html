@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alquiler de Consola PS5 a Domicilio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1e1e1e;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #00bcd4;
+    }
+    main {
+      padding: 20px;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: none;
+    }
+    button {
+      background-color: #00bcd4;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    footer {
+      background: #1e1e1e;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sistema de Alquiler de Consola PS5 a Domicilio</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Formulario de Alquiler</h2>
+      <form id="rentalForm">
+        <label>Nombre completo:</label>
+        <input type="text" name="nombre" required>
+
+        <label>Cédula:</label>
+        <input type="text" name="cedula" required>
+
+        <label>Dirección de entrega:</label>
+        <input type="text" name="direccion" required>
+
+        <label>Teléfono:</label>
+        <input type="tel" name="telefono" required>
+
+        <label>Duración del alquiler:</label>
+        <select name="duracion">
+          <option value="6">6 Horas - $40.000</option>
+          <option value="24">24 Horas - $70.000</option>
+          <option value="48">2 Días - $130.000</option>
+        </select>
+
+        <label>Controles adicionales ($10.000 c/u):</label>
+        <select name="controles">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+
+        <label>Juegos requeridos:</label>
+        <textarea name="juegos" placeholder="Escriba los juegos que desea incluir..." rows="3"></textarea>
+
+        <label>Recibo de servicio (número o dirección):</label>
+        <input type="text" name="recibo" required>
+
+        <label>Comentarios adicionales:</label>
+        <textarea name="comentarios" rows="3"></textarea>
+
+        <button type="submit">Enviar Solicitud</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Resumen del Servicio</h2>
+      <ul>
+        <li>Incluye transporte e instalación</li>
+        <li>Depósito de seguridad: $100.000</li>
+        <li>Contratos con foto de cédula + selfie + recibo de domicilio</li>
+        <li>Revisión y firma del contrato antes de entregar</li>
+        <li>Retiro inmediato al final del alquiler</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Política de Seguridad</h2>
+      <p>
+        La consola se entrega con contrato firmado, fotos de respaldo y registro de documento. En caso de daño, pérdida o intento de hurto, se procederá con las autoridades y se aplicarán las cláusulas del contrato. Todo alquiler requiere verificación de identidad y dirección.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 PS5 Rental Services. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    document.getElementById("rentalForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Solicitud enviada. Pronto te contactaremos para confirmar los datos y programar la entrega.");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
